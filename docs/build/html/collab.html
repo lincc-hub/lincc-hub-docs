@@ -7,6 +7,8 @@
   <title>Collaborating Using Our Platform &mdash; LINCC Science Platform 0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,6 +17,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/dark_mode_js/default_light.js"></script>
+        <script src="_static/dark_mode_js/theme_switcher.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -118,20 +122,20 @@
 <li><p>To defend against this, each group has an admin account, designed to own its software and important files.</p></li>
 </ul>
 <p>Here is an example of how to use an admin account in the terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> login as admin <span class="k">for</span> dirac-institute
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>login as admin <span class="k">for</span> dirac-institute
 <span class="gp">$</span>sudo -u dirac-institute –s
 <span class="gp">$</span><span class="nb">cd</span>
 
-<span class="gp">#</span> install a new environment
+<span class="gp"># </span>install a new environment
 <span class="gp">$</span>conda create -n solarsystem openorb
 <span class="go">exit</span>
 
-<span class="gp">#</span> check that we have access to the env
+<span class="gp"># </span>check that we have access to the env
 <span class="gp">$</span>conda env list
 <span class="gp">$</span>conda activate solarsystem
 <span class="gp">$</span>oorb
 
-<span class="gp">#</span> make it accessible in Jupyter
+<span class="gp"># </span>make it accessible <span class="k">in</span> Jupyter
 <span class="gp">$</span>sudo -u dirac-institute –s
 <span class="gp">$</span><span class="nb">cd</span>
 <span class="gp">$</span>conda activate solarsystem
