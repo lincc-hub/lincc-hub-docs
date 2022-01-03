@@ -16,7 +16,7 @@ Key Goals:
 2. Foster the creation and sharing of analysis tools and data for key LSST science goals (LINCC Frameworks)
 3. Train and mentor future science leaders (LINCC Hubs, Catalyst Fellowships)
 
-LINCC Hubs: Carnegie-Mellon University, Northwestern University (CIERA), University of Arizona, University of Washington (DiRAC Institute)
+LINCC Hub Collaborators: Carnegie-Mellon University, Northwestern University (CIERA), University of Arizona, University of Washington (DiRAC Institute)
 
 .. note:: This documentation site is under active development
 
