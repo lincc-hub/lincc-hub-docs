@@ -3,7 +3,7 @@ LINCC Science Platform
 
 *LSST Interdisciplinary Network for Collaboration and Computing (LINCC)*
 
-**LINCC Science Platform** is a collaborative platform for the scientific collaboration of LSST Science Operations using JupyterHub. The latest version of the documentation website can be accessed at [https://lincc-hub-docs.readthedocs.io/en/latest/](https://lincc-hub-docs.readthedocs.io/en/latest/)
+**LINCC Science Platform** is a collaborative platform for the scientific collaboration of LSST Science Operations using JupyterHub. The latest version of the documentation website can be accessed at https://lincc-hub-docs.readthedocs.io/en/latest/
 
 **Note**: This documentation site is under active development.
 
