@@ -34,7 +34,7 @@ Accessing JupyterLab
 ~~~~~~~~~~~~~~~~~~~~
 If you prefer the JupyterLab interface, replace the ‘tree’ in your URL with ‘lab’.
 
-.. image:: images/snip1.png
+.. image:: images/snip1.PNG
     :width: 300
     :align: center
 
