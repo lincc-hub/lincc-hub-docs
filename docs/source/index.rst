@@ -14,7 +14,7 @@ Key Goals:
 
 1. Open the discovery space to a larger and more inclusive community (LINCC Frameworks/Infrastructure
 2. Foster the creation and sharing of analysis tools and data for key LSST science goals (LINCC Frameworks)
-3. Train and mentor future science leaders (LINCC Hubs, Catalyst Fellowships)
+3. Train and mentor future science leaders (LINCC Hubs, Catalyst Fellowships) etc 
 
 LINCC Hub Collaborators: Carnegie-Mellon University, Northwestern University (CIERA), University of Arizona, University of Washington (DiRAC Institute)
 
