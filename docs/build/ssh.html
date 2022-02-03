@@ -35,38 +35,44 @@
             
   <section id="ssh">
 <h1>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h1>
-<p>A SSH “jump host” is deployed with this chart to allow users to use <cite>scp</cite> and <cite>sftp</cite> to copy files to the NFS. Each notebook server starts its own SSH service, allowing users to access their notebook servers using <cite>ssh</cite> via the jump host.</p>
-<ul>
-<li><p>If a user wants to utilize this, they should perform the following steps:
-1. Launch their notebook server.
-2. Start a terminal and open the file <code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code> with a text editor.
-3. On their local machine, generate a new or reuse an old SSH public key. Add their public key as a new line in the file from (2).
-4. Edit the file <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> on their local machine to include the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
-    <span class="n">User</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
-    <span class="n">Hostname</span> <span class="n">ssh</span><span class="o">.</span><span class="n">lsst</span><span class="o">.</span><span class="n">dirac</span><span class="o">.</span><span class="n">dev</span>
+<p>A SSH “jump host” is deployed with this chart to allow users to use <cite>scp</cite> and <cite>sftp</cite>
+to copy files to the NFS. Each notebook server starts its own SSH service,
+allowing users to access their notebook servers using <cite>ssh</cite> via the jump host.</p>
+<p>If a user wants to utilize this, they should perform the following steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Launch their notebook server.</p></li>
+<li><p>Start a terminal and open the file <code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code> with a text editor.</p></li>
+<li><p>On their local machine, generate a new or reuse an old SSH public key.Add their public key as a new line in the file from (2).</p></li>
+<li><p>Edit the file <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> on their local machine to include the following:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+      <span class="n">User</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+      <span class="n">Hostname</span> <span class="n">ssh</span><span class="o">.</span><span class="n">lsst</span><span class="o">.</span><span class="n">dirac</span><span class="o">.</span><span class="n">dev</span>
 
-<span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span>
-    <span class="n">User</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
-    <span class="n">Hostname</span> <span class="n">lincc</span><span class="o">-&lt;</span><span class="n">username</span><span class="o">&gt;.</span><span class="n">notebooks</span>
-    <span class="n">ProxyJump</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+  <span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span>
+      <span class="n">User</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+      <span class="n">Hostname</span> <span class="n">lincc</span><span class="o">-&lt;</span><span class="n">username</span><span class="o">&gt;.</span><span class="n">notebooks</span>
+      <span class="n">ProxyJump</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
 
-<span class="n">For</span> <span class="n">example</span><span class="p">::</span>
+<span class="n">For</span> <span class="n">example</span><span class="p">:</span>
 
-<span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
-    <span class="n">User</span> <span class="n">stevenstetzler</span>
-    <span class="n">Hostname</span> <span class="n">ssh</span><span class="o">.</span><span class="n">lsst</span><span class="o">.</span><span class="n">dirac</span><span class="o">.</span><span class="n">dev</span>
+<span class="p">::</span>
 
-<span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span>
-    <span class="n">User</span> <span class="n">stevenstetzler</span>
-    <span class="n">Hostname</span> <span class="n">lincc</span><span class="o">-</span><span class="n">stevenstetzler</span><span class="o">.</span><span class="n">notebooks</span>
-    <span class="n">ProxyJump</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+  <span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+      <span class="n">User</span> <span class="n">stevenstetzler</span>
+      <span class="n">Hostname</span> <span class="n">ssh</span><span class="o">.</span><span class="n">lsst</span><span class="o">.</span><span class="n">dirac</span><span class="o">.</span><span class="n">dev</span>
+
+  <span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span>
+      <span class="n">User</span> <span class="n">stevenstetzler</span>
+      <span class="n">Hostname</span> <span class="n">lincc</span><span class="o">-</span><span class="n">stevenstetzler</span><span class="o">.</span><span class="n">notebooks</span>
+      <span class="n">ProxyJump</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
 </pre></div>
 </div>
-</li>
-</ul>
 <p>5. On your local machine, ssh to your running notebook server: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">lsst-hub</span></code>.
-Alternatively, run the full command: <code class="docutils literal notranslate"><span class="pre">`ssh</span> <span class="pre">-J</span> <span class="pre">&lt;username&gt;&#64;ssh.lsst.dirac.dev</span> <span class="pre">&lt;username&gt;&#64;lincc-&lt;username&gt;.notebooks</span></code></p>
+Alternatively, run the full command: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-J</span> <span class="pre">&lt;username&gt;&#64;ssh.lsst.dirac.dev</span>
+<span class="pre">&lt;username&gt;&#64;lincc-&lt;username&gt;.notebooks</span></code></p>
+</div></blockquote>
 </section>
 
 
