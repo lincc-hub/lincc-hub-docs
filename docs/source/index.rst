@@ -23,14 +23,14 @@ LINCC Hub Collaborators: Carnegie-Mellon University, Northwestern University (CI
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
+
    install
    introj
    hubuse
    collab
    ares
-   support
    ssh
+   support
 
 Indices and tables
 ==================

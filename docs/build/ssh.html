@@ -15,7 +15,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Support and development" href="support.html" />
+    <link rel="next" title="Support and development" href="support.html" />
+    <link rel="prev" title="Available Resources" href="ares.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,41 +36,37 @@
   <section id="ssh">
 <h1>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h1>
 <p>A SSH “jump host” is deployed with this chart to allow users to use <cite>scp</cite> and <cite>sftp</cite> to copy files to the NFS. Each notebook server starts its own SSH service, allowing users to access their notebook servers using <cite>ssh</cite> via the jump host.</p>
-<p>If a user wants to utilize this, they should perform the following steps:
+<ul>
+<li><p>If a user wants to utilize this, they should perform the following steps:
 1. Launch their notebook server.
-2. Start a terminal and open the file <cite>~/.ssh/authorized_keys</cite> with a text editor.
+2. Start a terminal and open the file <code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code> with a text editor.
 3. On their local machine, generate a new or reuse an old SSH public key. Add their public key as a new line in the file from (2).
-4. Edit the file <cite>~/.ssh/config</cite> on their local machine to include the following:
-<a href="#id1"><span class="problematic" id="id2">``</span></a>`
-Host lsst-hub-ssh</p>
-<blockquote>
-<div><p>User &lt;username&gt;
-Hostname ssh.lsst.dirac.dev</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Host lsst-hub</dt><dd><p>User &lt;username&gt;
-Hostname lincc-&lt;username&gt;.notebooks
-ProxyJump lsst-hub-ssh</p>
-</dd>
-</dl>
-<p><code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">For</span> <span class="pre">example:</span>
-<span class="pre">`</span></code>
-Host lsst-hub-ssh</p>
-<blockquote>
-<div><p>User stevenstetzler
-Hostname ssh.lsst.dirac.dev</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Host lsst-hub</dt><dd><p>User stevenstetzler
-Hostname lincc-stevenstetzler.notebooks
-ProxyJump lsst-hub-ssh</p>
-</dd>
-</dl>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
-<ol class="arabic simple" start="5">
-<li><p>On your local machine, ssh to your running notebook server: <cite>ssh lsst-hub</cite>. Alternatively, run the full command: <cite>ssh -J &lt;username&gt;&#64;ssh.lsst.dirac.dev &lt;username&gt;&#64;lincc-&lt;username&gt;.notebooks</cite></p></li>
-</ol>
+4. Edit the file <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> on their local machine to include the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+    <span class="n">User</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+    <span class="n">Hostname</span> <span class="n">ssh</span><span class="o">.</span><span class="n">lsst</span><span class="o">.</span><span class="n">dirac</span><span class="o">.</span><span class="n">dev</span>
+
+<span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span>
+    <span class="n">User</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+    <span class="n">Hostname</span> <span class="n">lincc</span><span class="o">-&lt;</span><span class="n">username</span><span class="o">&gt;.</span><span class="n">notebooks</span>
+    <span class="n">ProxyJump</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+
+<span class="n">For</span> <span class="n">example</span><span class="p">::</span>
+
+<span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+    <span class="n">User</span> <span class="n">stevenstetzler</span>
+    <span class="n">Hostname</span> <span class="n">ssh</span><span class="o">.</span><span class="n">lsst</span><span class="o">.</span><span class="n">dirac</span><span class="o">.</span><span class="n">dev</span>
+
+<span class="n">Host</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span>
+    <span class="n">User</span> <span class="n">stevenstetzler</span>
+    <span class="n">Hostname</span> <span class="n">lincc</span><span class="o">-</span><span class="n">stevenstetzler</span><span class="o">.</span><span class="n">notebooks</span>
+    <span class="n">ProxyJump</span> <span class="n">lsst</span><span class="o">-</span><span class="n">hub</span><span class="o">-</span><span class="n">ssh</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>5. On your local machine, ssh to your running notebook server: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">lsst-hub</span></code>.
+Alternatively, run the full command: <code class="docutils literal notranslate"><span class="pre">`ssh</span> <span class="pre">-J</span> <span class="pre">&lt;username&gt;&#64;ssh.lsst.dirac.dev</span> <span class="pre">&lt;username&gt;&#64;lincc-&lt;username&gt;.notebooks</span></code></p>
 </section>
 
 
@@ -96,15 +93,16 @@ ProxyJump lsst-hub-ssh</p>
 <li class="toctree-l1"><a class="reference internal" href="hubuse.html">Customizing your Hub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collab.html">Collaborating Using Our Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ares.html">Available Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support and development</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support and development</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="support.html" title="previous chapter">Support and development</a></li>
+      <li>Previous: <a href="ares.html" title="previous chapter">Available Resources</a></li>
+      <li>Next: <a href="support.html" title="next chapter">Support and development</a></li>
   </ul></li>
 </ul>
 </div>
