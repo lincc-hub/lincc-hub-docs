@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SSH &#8212; LINCC Science Platform 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Support and development" href="support.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="ssh">
+<h1>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h1>
+<p>A SSH “jump host” is deployed with this chart to allow users to use <cite>scp</cite> and <cite>sftp</cite> to copy files to the NFS. Each notebook server starts its own SSH service, allowing users to access their notebook servers using <cite>ssh</cite> via the jump host.</p>
+<p>If a user wants to utilize this, they should perform the following steps:
+1. Launch their notebook server.
+2. Start a terminal and open the file <cite>~/.ssh/authorized_keys</cite> with a text editor.
+3. On their local machine, generate a new or reuse an old SSH public key. Add their public key as a new line in the file from (2).
+4. Edit the file <cite>~/.ssh/config</cite> on their local machine to include the following:
+<a href="#id1"><span class="problematic" id="id2">``</span></a>`
+Host lsst-hub-ssh</p>
+<blockquote>
+<div><p>User &lt;username&gt;
+Hostname ssh.lsst.dirac.dev</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Host lsst-hub</dt><dd><p>User &lt;username&gt;
+Hostname lincc-&lt;username&gt;.notebooks
+ProxyJump lsst-hub-ssh</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">For</span> <span class="pre">example:</span>
+<span class="pre">`</span></code>
+Host lsst-hub-ssh</p>
+<blockquote>
+<div><p>User stevenstetzler
+Hostname ssh.lsst.dirac.dev</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Host lsst-hub</dt><dd><p>User stevenstetzler
+Hostname lincc-stevenstetzler.notebooks
+ProxyJump lsst-hub-ssh</p>
+</dd>
+</dl>
+<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+<ol class="arabic simple" start="5">
+<li><p>On your local machine, ssh to your running notebook server: <cite>ssh lsst-hub</cite>. Alternatively, run the full command: <cite>ssh -J &lt;username&gt;&#64;ssh.lsst.dirac.dev &lt;username&gt;&#64;lincc-&lt;username&gt;.notebooks</cite></p></li>
+</ol>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">LINCC Science Platform</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Accessing LINCC JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introj.html">Introduction to Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hubuse.html">Customizing your Hub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collab.html">Collaborating Using Our Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ares.html">Available Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support and development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SSH</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="support.html" title="previous chapter">Support and development</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Aidan, Aditi, and Paolo.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/ssh.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
